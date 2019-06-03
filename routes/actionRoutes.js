@@ -9,7 +9,7 @@ const idBodyCheck = [requiredData, validateDataId]
 // ==== GET ==== //
 router.get('/', async (req, res) => {
   try {
-    let data = await db.getActions(req.project.id)
+    let data = await db.getActions(req.data.id)
     res.send(data)
   }
   catch (err) {
