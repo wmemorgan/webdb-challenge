@@ -4,7 +4,8 @@ const router = require('express').Router()
 const db = require('../data/models')
 
 // Load middleware
-const idBodyCheck = [requiredData, validateDataId]
+const validateProjectId = require('../middleware')
+const idBodyCheck = [requiredData, validateProjectId]
 
 // ==== GET ==== //
 router.get('/', async (req, res) => {
@@ -17,7 +18,7 @@ router.get('/', async (req, res) => {
   }
 })
 
-router.get('/:id', validateDataId, async (req, res) => {
+router.get('/:id', validateProjectId, async (req, res) => {
   try {
     let data = await db.getProject(req.data.id)
     res.send(data)
@@ -28,7 +29,7 @@ router.get('/:id', validateDataId, async (req, res) => {
 })
 
 // ==== POST ==== //
-router.post('/', idBodyCheck, async (req, res) => {
+router.post('/', requiredData, async (req, res) => {
   try {
     let data = await db.insert(req.body, 'Projects')
     res.status(201).send(data)
@@ -43,21 +44,6 @@ router.post('/', idBodyCheck, async (req, res) => {
 // ==== DELETE ==== //
 
 // Custom Middleware
-async function validateDataId(req, res, next) {
-  try {
-    let data = await db.findById(req.params.id, 'Projects')
-    if (data) {
-      req.data = data
-      next()
-    } else {
-      res.status(404).json({ message: `ID ${req.params.id} not found` })
-    }
-  }
-  catch (err) {
-    res.status(500).json(err.message)
-  }
-}
-
 const inputDataChecker = (arr, target) => target.every(v => arr.includes(v))
 const requiredFields = ['name', 'is_complete']
 
