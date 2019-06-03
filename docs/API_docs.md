@@ -10,10 +10,10 @@ https://wme-projects-api-v2.herokuapp.com/api
 | Method | Endpoint                        | Description                                        |
 |--------|---------------------------------|----------------------------------------------------|
 | GET    | `/projects` | Returns all projects       |
-| GET    | `/projects/:id` | Returns the dish with the provided `id` and include a list of the related recipes. |
-| POST    | `/projects` | Add the dish to the database and return the `id` of the new dish. |
-| PUT    | `/projects/:id` | Modify an existing dish.                   |
-| DELETE | `/projects/:id`         | Delete a dish.                            |
+| GET    | `/projects/:id` | Returns the project with the provided `id` and include a list of the related actions. |
+| POST    | `/projects` | Add the project to the database and return the `id` of the new project. |
+| PUT    | `/projects/:id` | Modify an existing project.                   |
+| DELETE | `/projects/:id`         | Delete a project.                            |
 
 #### Actions
 
