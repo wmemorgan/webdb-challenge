@@ -22,7 +22,7 @@ router.get('/:id', validateDataId, (req, res) => {
 })
 
 // ==== POST ==== //
-router.post('/', idBodyCheck, async (req, res) => {
+router.post('/', requiredData, async (req, res) => {
   try {
     let data = await db.insert(req.body, 'Actions')
     res.status(201).send(data)
