@@ -5,7 +5,7 @@ http://localhost:5000
 http://localhost:5000/api/projects
 
 ### GET Actions (ALL)
-http://localhost:5000/api/projects/2/actions
+http://localhost:5000/api/projects/1/actions
 
 ### GET Projects (by ID)
 http://localhost:5000/api/projects/1
