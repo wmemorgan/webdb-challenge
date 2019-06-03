@@ -40,8 +40,29 @@ router.post('/', requiredData, async (req, res) => {
 })
 
 // ==== PUT ==== //
+router.put('/:id', idBodyCheck, async (req, res) => {
+  try {
+    let data = await db.update(req.data.id, req.body, 'Projects')
+    res.json(data)
+  }
+  catch (err) {
+    res.status(500).send(err.message)
+  }
+})
 
 // ==== DELETE ==== //
+router.delete('/:id', validateProjectId, async (req, res) => {
+  try {
+    let data = await db.remove(req.data.id, 'Projects')
+    if (data <= 0) throw err
+    else {
+      res.json({ message: `Successfully deleted project ${req.params.id} ` })
+    }
+  }
+  catch (err) {
+    res.status(500).send(err.message)
+  }
+})
 
 // Custom Middleware
 const inputDataChecker = (arr, target) => target.every(v => arr.includes(v))

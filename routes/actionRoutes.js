@@ -33,8 +33,29 @@ router.post('/', requiredData, async (req, res) => {
 })
 
 // ==== PUT ==== //
+router.put('/:id', validateDataId, async (req, res) => {
+  try {
+    let data = await db.update(req.params.id, req.body, 'Actions')
+    res.json(data)
+  }
+  catch (err) {
+    res.status(500).send(err.message)
+  }
+})
 
 // ==== DELETE ==== //
+router.delete('/:id', validateDataId, async (req, res) => {
+  try {
+    let data = await db.remove(req.data.id, 'Actions')
+    if (data <= 0) throw err
+    else {
+      res.json({ message: `Successfully deleted action ID ${req.params.id} ` })
+    }
+  }
+  catch (err) {
+    res.status(500).send(err.message)
+  }
+})
 
 // Custom Middleware
 async function validateDataId(req, res, next) {
