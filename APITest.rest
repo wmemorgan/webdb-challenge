@@ -27,23 +27,27 @@ POST http://localhost:5000/api/projects/1/actions HTTP/1.1
 content-type: application/json
 
 {
-  "description": "Initiate project",
+  "description": "Test #2",
   "project_id": 1,
+  "notes": "Testing, testing...",
   "is_complete": false
 }
 
 ### PUT
-PUT http://localhost:5000/api/projects/10 HTTP/1.1
+PUT http://localhost:5000/api/projects/1/actions/1 HTTP/1.1
 content-type: application/json
 
 {
-
+  "description": "Project Kick-off",
+  "project_id": 1,
+  "notes": "Initiate project",
+  "is_complete": false
 }
 
 ### DELETE Projects
-DELETE http://localhost:5000/api/projects/7
+DELETE http://localhost:5000/api/projects/
 
 ### DELETE Actions
-DELETE http://localhost:5000/api/projects/2/actions/7
+DELETE http://localhost:5000/api/projects/1/actions/3
 
 
