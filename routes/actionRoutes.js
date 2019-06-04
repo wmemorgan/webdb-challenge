@@ -33,7 +33,7 @@ router.post('/', requiredData, async (req, res) => {
 })
 
 // ==== PUT ==== //
-router.put('/:id', validateDataId, async (req, res) => {
+router.put('/:id', idBodyCheck, async (req, res) => {
   try {
     let data = await db.update(req.params.id, req.body, 'Actions')
     res.json(data)
