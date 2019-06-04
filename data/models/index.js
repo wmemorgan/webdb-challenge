@@ -30,7 +30,7 @@ function findById(id, table) {
 
 function insert(data, table) {
   return db(table)
-    .insert(data, 'id')
+    .insert(data)
     .then(ids => {
       return db(table)
         .where({ id: ids[0] })
