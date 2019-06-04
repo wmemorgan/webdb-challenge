@@ -14,11 +14,12 @@ async function getProject(id) {
 function getActions(id) {
   return db('Actions')
     .where({ project_id: id })
+    .orderBy('Actions.id')
 }
 
 //==== Global Database Methods ====//
 function find(table) {
-  return db(table)
+  return db(table).orderBy('id')
 }
 
 function findById(id, table) {
