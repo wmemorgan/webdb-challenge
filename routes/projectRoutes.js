@@ -69,7 +69,6 @@ const inputDataChecker = (arr, target) => target.every(v => arr.includes(v))
 const requiredFields = ['name', 'is_complete']
 
 function requiredData(req, res, next) {
-  console.log(`inputDataChecker: `, inputDataChecker(Object.keys(req.body), requiredFields))
   if (!req.body || !Object.keys(req.body).length) {
     res.status(400).json({ message: "Missing user data" })
   } else if (!inputDataChecker(Object.keys(req.body), requiredFields)) {
