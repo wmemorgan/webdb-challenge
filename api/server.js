@@ -1,5 +1,6 @@
 const express = require('express')
 const helmet = require('helmet')
+const cors = require('cors')
 const logger = require('morgan')
 
 // Import resource routes
@@ -12,6 +13,7 @@ const server = express()
 //==== Global middleware ==== //
 const validateProjectId = require('../middleware')
 server.use(helmet())
+server.use(cors())
 server.use(express.json())
 server.use(logger('dev'))
 
