@@ -32,10 +32,7 @@ function insert(data, table) {
   return db(table)
     .insert(data)
     .then(ids => {
-      return db(table)
-        .where({ id: ids[0] })
-        .first()
-        .then(record => record)
+      findById(ids[0])
     })
 }
 
