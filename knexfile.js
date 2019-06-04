@@ -16,10 +16,28 @@ module.exports = {
     },
     debug: true
   },
+  staging: {
+    client: 'pg',
+    useNullAsDefault: true,
+    connection: {
+      connectionString: process.env.DATABASE_URL,
+      ssl: true
+    },
+    migrations: {
+      directory: './data/migrations'
+    },
+    seeds: {
+      directory: './data/seeds'
+    },
+    debug: true 
+  },
   production: {
     client: 'pg',
     useNullAsDefault: true,
-    connection: process.env.DATABASE_URL,
+    connection: {
+      connectionString: process.env.HEROKU_POSTGRESQL_ROSE_URL,
+      ssl: true
+    },
     migrations: {
       directory: './data/migrations'
     },
