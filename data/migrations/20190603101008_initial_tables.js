@@ -11,8 +11,11 @@ exports.up = async function(knex) {
     tbl.increments('id')
     tbl
       .integer('project_id')
+      .notNullable()
       .references('id')
       .inTable('Projects')
+      .onDelete('CASCADE')
+      .onUpdate('CASCADE')
     tbl.string('description', 1000).notNullable()
     tbl.string('notes', 1000)
     tbl.boolean('is_complete').notNullable().defaultTo(false)
